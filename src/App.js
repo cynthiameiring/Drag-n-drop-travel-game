@@ -6,7 +6,8 @@ import Backend from "react-dnd-html5-backend";
 import { DndProvider } from "react-dnd";
 
 import "./App.css";
-import Squares from "./components/Squares";
+
+import LetterContainer from "./components/LetterContainer";
 
 class App extends Component {
   render() {
@@ -14,7 +15,8 @@ class App extends Component {
       <Provider store={store}>
         <DndProvider backend={Backend}>
           <main>Hello world!</main>
-          <Squares />
+
+          <LetterContainer />
         </DndProvider>
       </Provider>
     );

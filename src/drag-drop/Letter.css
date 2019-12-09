@@ -1,0 +1,18 @@
+.letter {
+  width: 100px;
+  height: 100px;
+  border: 2px;
+  border-style: solid;
+  margin: 5%;
+  text-align: center;
+  line-height: 100px;
+  font-size: 40px;
+  background-color: rgb(247, 88, 88);
+}
+
+.letter-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
