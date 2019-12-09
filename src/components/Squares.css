@@ -1,0 +1,22 @@
+.letter-container {
+  display: flex;
+  justify-content: center;
+}
+
+.letter {
+  width: 100px;
+  height: 100px;
+  border: 2px;
+  border-style: solid;
+  margin: 2%;
+  text-align: center;
+  line-height: 100px;
+}
+
+.target {
+  width: 100px;
+  height: 100px;
+  border: 2px;
+  border-style: dotted;
+  margin: 2%;
+}
