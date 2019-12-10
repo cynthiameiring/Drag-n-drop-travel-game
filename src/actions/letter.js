@@ -12,10 +12,18 @@ export function getTargets(lengthOfWord) {
   };
 }
 
-export function moveLetter(targetId, letterId) {
+export function moveLetter(targetId, letter) {
   console.log("what is target id?", targetId);
   return {
     type: "MOVE_LETTER",
-    payload: targetId
+    targetId: targetId,
+    letter: letter
+  };
+}
+
+export function currentLetterDragged(letter) {
+  return {
+    type: "CURRENT_LETTER",
+    payload: letter
   };
 }

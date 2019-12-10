@@ -3,9 +3,7 @@ import { connect } from "react-redux";
 import Letter from "../drag-drop/Letter";
 import Target from "../drag-drop/Target";
 import "../drag-drop/Letter.css";
-//import Letter from './Letter'
 import { moveLetter, getLetters, getTargets } from "../actions/letter";
-import { loadPartialConfig } from "@babel/core";
 
 class LetterContainer extends Component {
   state = {
@@ -15,7 +13,6 @@ class LetterContainer extends Component {
     this.props.getLetters();
     this.props.getTargets(3);
   }
-
   render() {
     if (!this.props.letters) {
       return "loading..";
@@ -28,7 +25,11 @@ class LetterContainer extends Component {
           // style={{ overflow: "hidden", clear: "both" }}
         >
           {this.props.letters.map(letter => (
-            <Letter name={letter} className="letter" />
+            <Letter
+              name={letter}
+              className="letter"
+              currentLetterDragged={this.currentLetterDragged}
+            />
           ))}
         </div>
         <div
@@ -39,19 +40,10 @@ class LetterContainer extends Component {
             <Target
               id={target.id}
               className={target.className}
+              letter={target.nameLetter}
               moveLetter={this.props.moveLetter}
             />
           ))}
-          {/* <Target
-            id="1"
-            className={this.state.className}
-            moveLetter={this.props.moveLetter}
-          />
-          <Target
-            id="2"
-            className={this.state.className}
-            moveLetter={this.props.moveLetter}
-          /> */}
         </div>
       </div>
     );
