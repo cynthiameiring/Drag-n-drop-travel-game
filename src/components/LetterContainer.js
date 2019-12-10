@@ -1,31 +1,44 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import Letter from "../drag-drop/Letter";
-import Target from "../drag-drop/Target";
-import "../drag-drop/Letter.css";
-import { moveLetter, getLetters, getTargets } from "../actions/letter";
+import Letter from "./Letter";
+import Target from "./Target";
+import "./Letter.css";
+import { moveLetter } from "../actions/letter";
+import { getLetters } from "../actions/word";
+import { words } from "../data";
+import GameLogic from "./GameLogic";
 
 class LetterContainer extends Component {
-  state = {
-    className: "target"
-  };
+  state = { pickedWord: null };
+
   componentDidMount() {
-    this.props.getLetters();
-    this.props.getTargets(3);
+    this.pickWord();
+    // this.setState({});
   }
+
+  pickWord() {
+    const numberOfWords = words.length;
+    const randomNumber = Math.floor(Math.random() * numberOfWords);
+    const pickedWord = words[randomNumber];
+    this.props.getLetters(pickedWord);
+    this.setState({ pickedWord: pickedWord });
+  }
+
   render() {
-    if (!this.props.letters) {
+    if (this.props.targetBlocks.length === 0) {
       return "loading..";
     }
-    console.log("letters:", this.props.letters);
+    console.log("hio:", this.props.letters);
+    console.log("targetBlocks", this.props.targetBlocks.length);
     return (
       <div>
         <div
           className="letter-container"
           // style={{ overflow: "hidden", clear: "both" }}
         >
-          {this.props.letters.map(letter => (
+          {this.props.letters.map((letter, index) => (
             <Letter
+              key={index}
               name={letter}
               className="letter"
               currentLetterDragged={this.currentLetterDragged}
@@ -38,6 +51,7 @@ class LetterContainer extends Component {
         >
           {this.props.targetBlocks.map(target => (
             <Target
+              key={target.id}
               id={target.id}
               className={target.className}
               letter={target.nameLetter}
@@ -45,6 +59,11 @@ class LetterContainer extends Component {
             />
           ))}
         </div>
+        {this.props.targetBlocks.length !== 0 ? (
+          <GameLogic pickedWord={this.state.pickedWord} />
+        ) : (
+          ""
+        )}
       </div>
     );
   }
@@ -57,6 +76,7 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { moveLetter, getLetters, getTargets })(
-  LetterContainer
-);
+export default connect(mapStateToProps, {
+  moveLetter,
+  getLetters
+})(LetterContainer);

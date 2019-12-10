@@ -1,18 +1,17 @@
 import React from "react";
-import { ItemTypes } from "./ItemTypes";
 import { useDrag } from "react-dnd";
-import { currentLetterDragged } from "../actions/letter";
 import { connect } from "react-redux";
+import { ItemTypes } from "./ItemTypes";
+import { currentLetterDragged } from "../actions/letter";
 
 function Letter({ name, currentLetterDragged }) {
   const [{ opacity, nameLetter }, drag] = useDrag({
     item: { name, type: ItemTypes.LETTER },
     collect: monitor => ({
       opacity: monitor.isDragging() ? 0.4 : 1,
-      nameLetter: monitor.isDragging() ? name : ""
+      nameLetter: monitor.isDragging() ? currentLetterDragged(name) : ""
     })
   });
-  currentLetterDragged(nameLetter);
 
   return (
     <div ref={drag} className="letter" style={{ opacity }}>
