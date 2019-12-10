@@ -1,9 +1,4 @@
-// import { words } from "../data";
-
 export const getLetters = pickedWord => {
-  //   const numberOfWords = words.length;
-  //   const randomNumber = Math.floor(Math.random() * numberOfWords);
-  //   const pickedWord = words[randomNumber];
   const letters = pickedWord.split("");
 
   function shuffle(array) {
@@ -19,3 +14,8 @@ export const getLetters = pickedWord => {
     payload: letters
   };
 };
+
+// export const newWord = () =>
+// return {
+//     type: ""
+// }

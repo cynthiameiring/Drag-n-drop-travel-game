@@ -12,6 +12,7 @@ class GameLogic extends Component {
     console.log("guessedWord", guessedWord);
     if (guessedWord === this.props.pickedWord) {
       console.log("hoera!");
+      this.props.startNewGame();
     } else {
       console.log("wrong guess");
     }
