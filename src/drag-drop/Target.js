@@ -8,16 +8,14 @@ function selectBackgroundColor(isActive, canDrop) {
   } else if (canDrop) {
     return "rgb(200, 200, 200)";
   } else {
-    return "white";
+    return;
   }
 }
-const Target = ({ allowedDropEffect }) => {
+
+function Target(props) {
   const [{ canDrop, isOver }, drop] = useDrop({
     accept: ItemTypes.LETTER,
-    drop: () => ({
-      name: `${allowedDropEffect} Target`,
-      allowedDropEffect
-    }),
+    drop: () => props.moveLetter(props.id),
     collect: monitor => ({
       isOver: monitor.isOver(),
       canDrop: monitor.canDrop()
@@ -26,12 +24,11 @@ const Target = ({ allowedDropEffect }) => {
   const isActive = canDrop && isOver;
   const backgroundColor = selectBackgroundColor(isActive, canDrop);
   return (
-    <div ref={drop} style={{ backgroundColor }} className="target">
+    <div ref={drop} style={{ backgroundColor }} className={props.className}>
       {/* {`Works with ${allowedDropEffect} drop effect`}
-      <br />
       <br />
       {isActive ? "Release to drop" : "Drag a box here"} */}
     </div>
   );
-};
+}
 export default Target;
