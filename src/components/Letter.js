@@ -1,8 +1,8 @@
 import React from "react";
-import { ItemTypes } from "./ItemTypes";
 import { useDrag } from "react-dnd";
-import { currentLetterDragged } from "../actions/letter";
 import { connect } from "react-redux";
+import { ItemTypes } from "./ItemTypes";
+import { currentLetterDragged } from "../actions/letter";
 
 function Letter({ name, currentLetterDragged }) {
   const [{ opacity, nameLetter }, drag] = useDrag({

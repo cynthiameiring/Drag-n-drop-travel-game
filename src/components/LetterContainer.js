@@ -1,15 +1,17 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import Letter from "../drag-drop/Letter";
-import Target from "../drag-drop/Target";
-import "../drag-drop/Letter.css";
+import Letter from "./Letter";
+import Target from "./Target";
+import "./Letter.css";
 import { moveLetter, getLetters, getTargets } from "../actions/letter";
+import { pickWord } from "../actions/word";
 
 class LetterContainer extends Component {
   state = {
     className: "target"
   };
   componentDidMount() {
+    this.props.pickWord();
     this.props.getLetters();
     this.props.getTargets(3);
   }
@@ -57,6 +59,9 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { moveLetter, getLetters, getTargets })(
-  LetterContainer
-);
+export default connect(mapStateToProps, {
+  moveLetter,
+  getLetters,
+  getTargets,
+  pickWord
+})(LetterContainer);

@@ -2,7 +2,6 @@ import React from "react";
 import { useDrop } from "react-dnd";
 import { ItemTypes } from "./ItemTypes";
 import { connect } from "react-redux";
-import targetBlocks from "../reducers/targetBlocks";
 
 function selectBackgroundColor(isActive, canDrop) {
   if (isActive) {
