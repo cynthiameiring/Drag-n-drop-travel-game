@@ -9,10 +9,9 @@ function Letter({ name, currentLetterDragged }) {
     item: { name, type: ItemTypes.LETTER },
     collect: monitor => ({
       opacity: monitor.isDragging() ? 0.4 : 1,
-      nameLetter: monitor.isDragging() ? name : ""
+      nameLetter: monitor.isDragging() ? currentLetterDragged(name) : ""
     })
   });
-  currentLetterDragged(nameLetter);
 
   return (
     <div ref={drag} className="letter" style={{ opacity }}>

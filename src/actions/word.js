@@ -1,13 +1,10 @@
-import { words } from "../data";
+// import { words } from "../data";
 
-export const pickWord = () => {
-  const numberOfWords = words.length;
-  const randomNumber = Math.floor(Math.random() * numberOfWords);
-  const pickedWord = words[randomNumber];
+export const getLetters = pickedWord => {
+  //   const numberOfWords = words.length;
+  //   const randomNumber = Math.floor(Math.random() * numberOfWords);
+  //   const pickedWord = words[randomNumber];
   const letters = pickedWord.split("");
-  console.log("letters", letters);
-  const amountOfLetters = letters.length;
-  console.log("amount of letters", amountOfLetters);
 
   function shuffle(array) {
     for (let i = array.length - 1; i > 0; i--) {

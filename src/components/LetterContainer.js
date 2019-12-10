@@ -4,24 +4,28 @@ import Letter from "./Letter";
 import Target from "./Target";
 import "./Letter.css";
 import { moveLetter } from "../actions/letter";
-import { pickWord } from "../actions/word";
+import { getLetters } from "../actions/word";
+import { words } from "../data";
+import GameLogic from "./GameLogic";
 
 class LetterContainer extends Component {
-  state = {
-    letters: []
-  };
-  componentDidMount() {
-    this.props.pickWord();
-    this.setState({ letters: this.props.letters });
-    // console.log("state", this.state.letters);
-    // this.props.getTargets(this.state.letters.length);
+  state = { pickedWord: null };
 
-    // const amountOfLetters = this.props.letters.length;
-    // console.log("letters.length", amountOfLetters);
-    // this.props.getTargets(amountOfLetters);
+  componentDidMount() {
+    this.pickWord();
+    // this.setState({});
   }
+
+  pickWord() {
+    const numberOfWords = words.length;
+    const randomNumber = Math.floor(Math.random() * numberOfWords);
+    const pickedWord = words[randomNumber];
+    this.props.getLetters(pickedWord);
+    this.setState({ pickedWord: pickedWord });
+  }
+
   render() {
-    if (this.props.targetBlocks.length.length === 0) {
+    if (this.props.targetBlocks.length === 0) {
       return "loading..";
     }
     console.log("hio:", this.props.letters);
@@ -46,17 +50,20 @@ class LetterContainer extends Component {
           // style={{ overflow: "hidden", clear: "both" }}
         >
           {this.props.targetBlocks.map(target => (
-            <>
-              <Target
-                key={target.id}
-                id={target.id}
-                className={target.className}
-                letter={target.nameLetter}
-                moveLetter={this.props.moveLetter}
-              />
-            </>
+            <Target
+              key={target.id}
+              id={target.id}
+              className={target.className}
+              letter={target.nameLetter}
+              moveLetter={this.props.moveLetter}
+            />
           ))}
         </div>
+        {this.props.targetBlocks.length !== 0 ? (
+          <GameLogic pickedWord={this.state.pickedWord} />
+        ) : (
+          ""
+        )}
       </div>
     );
   }
@@ -71,5 +78,5 @@ const mapStateToProps = state => {
 
 export default connect(mapStateToProps, {
   moveLetter,
-  pickWord
+  getLetters
 })(LetterContainer);

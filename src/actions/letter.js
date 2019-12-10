@@ -1,10 +1,3 @@
-export function getTargets(lengthOfWord) {
-  return {
-    type: "GET_TARGETBLOCKS",
-    payload: lengthOfWord
-  };
-}
-
 export function moveLetter(targetId, letter) {
   console.log("what is target id?", targetId);
   return {
