@@ -4,13 +4,20 @@ import { connect } from "react-redux";
 class GameLogic extends Component {
   checkWord() {
     console.log("check word", this.props.pickedWord);
+    const guessedLetters = this.props.targetBlocks.map(
+      target => target.nameLetter
+    );
+    console.log("guessedLetter", guessedLetters);
+    const guessedWord = guessedLetters.join("");
+    console.log("guessedWord", guessedWord);
+    if (guessedWord === this.props.pickedWord) {
+      console.log("hoera!");
+    } else {
+      console.log("wrong guess");
+    }
   }
 
   render() {
-    // const allClassNames = this.props.targetBlocks.map(
-    //   target => target.className
-    // );
-    // console.log("allclassnames", allClassNames);
     const allTargetsFilled = this.props.targetBlocks.every(
       target => target.className === "letter"
     );

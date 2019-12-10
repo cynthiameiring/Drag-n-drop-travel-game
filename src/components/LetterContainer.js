@@ -28,8 +28,7 @@ class LetterContainer extends Component {
     if (this.props.targetBlocks.length === 0) {
       return "loading..";
     }
-    console.log("hio:", this.props.letters);
-    console.log("targetBlocks", this.props.targetBlocks.length);
+
     return (
       <div>
         <div
