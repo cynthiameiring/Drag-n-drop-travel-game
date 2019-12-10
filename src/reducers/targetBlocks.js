@@ -1,6 +1,7 @@
 export default (state = [], action) => {
-  if (action.type === "GET_TARGETS") {
-    for (let i = 0; i < action.payload; i++) {
+  if (action.type === "GET_LETTERS") {
+    for (let i = 0; i < action.payload.length; i++) {
+      console.log("test");
       state.push({ id: i, className: "target", nameLetter: "" });
     }
     return state;

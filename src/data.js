@@ -7,5 +7,8 @@ export const words = [
   "paspoort",
   "tandpasta",
   "zeilboot",
-  "bergen"
+  "bergen",
+  "vulkaan",
+  "strand",
+  "tandenborstel"
 ];

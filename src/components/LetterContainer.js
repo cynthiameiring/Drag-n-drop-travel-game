@@ -3,31 +3,38 @@ import { connect } from "react-redux";
 import Letter from "./Letter";
 import Target from "./Target";
 import "./Letter.css";
-import { moveLetter, getLetters, getTargets } from "../actions/letter";
+import { moveLetter } from "../actions/letter";
 import { pickWord } from "../actions/word";
 
 class LetterContainer extends Component {
   state = {
-    className: "target"
+    letters: []
   };
   componentDidMount() {
     this.props.pickWord();
-    this.props.getLetters();
-    this.props.getTargets(3);
+    this.setState({ letters: this.props.letters });
+    // console.log("state", this.state.letters);
+    // this.props.getTargets(this.state.letters.length);
+
+    // const amountOfLetters = this.props.letters.length;
+    // console.log("letters.length", amountOfLetters);
+    // this.props.getTargets(amountOfLetters);
   }
   render() {
-    if (!this.props.letters) {
+    if (this.props.targetBlocks.length.length === 0) {
       return "loading..";
     }
-    console.log("letters:", this.props.letters);
+    console.log("hio:", this.props.letters);
+    console.log("targetBlocks", this.props.targetBlocks.length);
     return (
       <div>
         <div
           className="letter-container"
           // style={{ overflow: "hidden", clear: "both" }}
         >
-          {this.props.letters.map(letter => (
+          {this.props.letters.map((letter, index) => (
             <Letter
+              key={index}
               name={letter}
               className="letter"
               currentLetterDragged={this.currentLetterDragged}
@@ -39,12 +46,15 @@ class LetterContainer extends Component {
           // style={{ overflow: "hidden", clear: "both" }}
         >
           {this.props.targetBlocks.map(target => (
-            <Target
-              id={target.id}
-              className={target.className}
-              letter={target.nameLetter}
-              moveLetter={this.props.moveLetter}
-            />
+            <>
+              <Target
+                key={target.id}
+                id={target.id}
+                className={target.className}
+                letter={target.nameLetter}
+                moveLetter={this.props.moveLetter}
+              />
+            </>
           ))}
         </div>
       </div>
@@ -61,7 +71,5 @@ const mapStateToProps = state => {
 
 export default connect(mapStateToProps, {
   moveLetter,
-  getLetters,
-  getTargets,
   pickWord
 })(LetterContainer);

@@ -1,13 +1,6 @@
-export function getLetters() {
-  return {
-    type: "GET_LETTERS",
-    payload: ["t", "a", "s"]
-  };
-}
-
 export function getTargets(lengthOfWord) {
   return {
-    type: "GET_TARGETS",
+    type: "GET_TARGETBLOCKS",
     payload: lengthOfWord
   };
 }
