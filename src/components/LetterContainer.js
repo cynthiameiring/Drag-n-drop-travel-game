@@ -1,5 +1,6 @@
 import React from "react";
 import Letter from "../drag-drop/Letter";
+import Target from "../drag-drop/Target";
 import "../drag-drop/Letter.css";
 //import Letter from './Letter'
 
@@ -17,6 +18,13 @@ export default function LetterContainer() {
       >
         <Letter name="A" className="letter" />
         <Letter name="B" className="letter" />
+      </div>
+      <div
+        className="letter-container"
+        style={{ overflow: "hidden", clear: "both" }}
+      >
+        <Target allowedDropEffect="any" className="target" />
+        <Target allowedDropEffect="any" className="target" />
       </div>
     </div>
   );

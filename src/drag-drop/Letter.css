@@ -1,3 +1,10 @@
+.letter-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
 .letter {
   width: 100px;
   height: 100px;
@@ -10,9 +17,20 @@
   background-color: rgb(247, 88, 88);
 }
 
-.letter-container {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  flex-direction: row;
+.target {
+  height: 100px;
+  width: 100px;
+  margin: 5%;
+  border: 2px;
+  border-style: dashed;
+}
+
+.letter-gone {
+  width: 100px;
+  height: 100px;
+  border: 2px;
+  border-style: solid;
+  margin: 5%;
+
+  background-color: white;
 }
