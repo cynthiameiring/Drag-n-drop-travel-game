@@ -1,23 +1,24 @@
 import React from "react";
 import { useDrop } from "react-dnd";
 import { ItemTypes } from "./ItemTypes";
+import { connect } from "react-redux";
+import targetBlocks from "../reducers/targetBlocks";
 
 function selectBackgroundColor(isActive, canDrop) {
   if (isActive) {
     return "rgb(100, 100, 100)";
   } else if (canDrop) {
-    return "rgb(200, 200, 200)";
+    return;
+    // "rgb(200, 200, 200)";
   } else {
-    return "white";
+    return;
   }
 }
-const Target = ({ allowedDropEffect }) => {
+
+function Target(props) {
   const [{ canDrop, isOver }, drop] = useDrop({
     accept: ItemTypes.LETTER,
-    drop: () => ({
-      name: `${allowedDropEffect} Target`,
-      allowedDropEffect
-    }),
+    drop: () => props.moveLetter(props.id, props.currentLetter),
     collect: monitor => ({
       isOver: monitor.isOver(),
       canDrop: monitor.canDrop()
@@ -26,12 +27,16 @@ const Target = ({ allowedDropEffect }) => {
   const isActive = canDrop && isOver;
   const backgroundColor = selectBackgroundColor(isActive, canDrop);
   return (
-    <div ref={drop} style={{ backgroundColor }} className="target">
-      {/* {`Works with ${allowedDropEffect} drop effect`}
-      <br />
-      <br />
-      {isActive ? "Release to drop" : "Drag a box here"} */}
+    <div ref={drop} style={{ backgroundColor }} className={props.className}>
+      {props.letter}
     </div>
   );
+}
+
+const mapStateToProps = state => {
+  return {
+    currentLetter: state.currentLetter
+  };
 };
-export default Target;
+
+export default connect(mapStateToProps)(Target);

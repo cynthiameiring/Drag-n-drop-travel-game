@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import store from "./store";
 import { Provider } from "react-redux";
-import { Route } from "react-router-dom";
+// import { Route } from "react-router-dom";
 import Backend from "react-dnd-html5-backend";
 import { DndProvider } from "react-dnd";
 
@@ -14,8 +14,6 @@ class App extends Component {
     return (
       <Provider store={store}>
         <DndProvider backend={Backend}>
-          <main>Hello world!</main>
-
           <LetterContainer />
         </DndProvider>
       </Provider>
