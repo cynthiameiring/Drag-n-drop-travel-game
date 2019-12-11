@@ -9,7 +9,7 @@ import { words } from "../data";
 import GameLogic from "./GameLogic";
 
 class LetterContainer extends Component {
-  state = { pickedWord: null, startNewGame: false };
+  state = { pickedWord: null };
 
   componentDidMount() {
     this.pickWord();
