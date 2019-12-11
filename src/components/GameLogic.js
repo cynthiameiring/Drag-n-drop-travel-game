@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React from "react";
 import { connect } from "react-redux";
 // import uifx from "uifx";
 
-class GameLogic extends Component {
+class GameLogic extends React.Component {
   checkWord(targets) {
     console.log("check word", this.props.pickedWord);
     const guessedLetters = targets.map(target => target.letter);

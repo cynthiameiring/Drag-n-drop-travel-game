@@ -28,7 +28,7 @@ function Target(props) {
   const isActive = canDrop && isOver;
   const backgroundColor = selectBackgroundColor(isActive, canDrop);
   return (
-    <div ref={drop} style={{ backgroundColor }} className="target">
+    <div ref={drop} style={{ backgroundColor }} className={props.className}>
       {/* {props.letter} */}
       <Square>{props.children}</Square>
     </div>
