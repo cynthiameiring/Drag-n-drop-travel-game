@@ -5,8 +5,6 @@ import { Provider } from "react-redux";
 import Backend from "react-dnd-html5-backend";
 import { DndProvider } from "react-dnd";
 
-import "./App.css";
-
 import LetterContainer from "./components/LetterContainer";
 
 class App extends Component {
