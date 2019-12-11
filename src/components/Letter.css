@@ -35,3 +35,12 @@
   margin: 5%;
   background-color: white;
 } */
+
+.travel-image {
+  width: 100px;
+}
+
+.animated {
+  animation-name: bounce;
+  animation-iteration-count: 2;
+}

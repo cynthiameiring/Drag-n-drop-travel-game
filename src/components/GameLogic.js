@@ -11,7 +11,7 @@ class GameLogic extends Component {
     console.log("guessedWord", guessedWord);
     if (guessedWord === this.props.pickedWord) {
       console.log("hoera!");
-      this.props.startNewGame();
+      // this.props.startNewGame();
     } else {
       console.log("wrong guess");
     }
@@ -28,18 +28,6 @@ class GameLogic extends Component {
     } else return null;
   }
 }
-
-//   render() {
-//     const targets = this.props.targetBlocks.splice(-this.props.amountOfLetters);
-//     console.log("targets", targets);
-//     const allTargetsFilled = targets.every(target => target.letter === true);
-//     console.log("alltargets filled", allTargetsFilled);
-//     if (allTargetsFilled) {
-//       this.checkWord();
-//       return null;
-//     } else return null;
-//   }
-// }
 
 const mapStateToProps = state => {
   return {
