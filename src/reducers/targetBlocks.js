@@ -19,11 +19,14 @@ export default (state = [], action) => {
     return clearState;
   } else if (action.type === "MOVE_LETTER") {
     const id = action.targetId;
-    const newClass = "letter";
+    const previousId = action.previousTarget;
+    // const newClass = "letter";
     const newLetter = action.letter;
     const newState = [...state];
-    newState[id].className = newClass;
-    newState[id].nameLetter = newLetter;
+    // newState[id].className = newClass;
+    newState[id].letter = newLetter;
+    newState[previousId].letter = null;
+    // newState[]
     return newState;
   }
   return state;

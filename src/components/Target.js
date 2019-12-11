@@ -18,7 +18,8 @@ function selectBackgroundColor(isActive, canDrop) {
 function Target(props) {
   const [{ canDrop, isOver }, drop] = useDrop({
     accept: ItemTypes.LETTER,
-    drop: () => props.moveLetter(props.id, props.currentLetter),
+    drop: () =>
+      props.moveLetter(props.id, props.currentLetter, props.previousTarget),
     collect: monitor => ({
       isOver: monitor.isOver(),
       canDrop: monitor.canDrop()
@@ -36,7 +37,8 @@ function Target(props) {
 
 const mapStateToProps = state => {
   return {
-    currentLetter: state.currentLetter
+    currentLetter: state.currentLetter[0],
+    previousTarget: state.currentLetter[1]
   };
 };
 

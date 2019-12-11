@@ -3,11 +3,9 @@ import { connect } from "react-redux";
 // import uifx from "uifx";
 
 class GameLogic extends Component {
-  checkWord() {
+  checkWord(targets) {
     console.log("check word", this.props.pickedWord);
-    const guessedLetters = this.props.targetBlocks.map(
-      target => target.nameLetter
-    );
+    const guessedLetters = targets.map(target => target.letter);
     console.log("guessedLetter", guessedLetters);
     const guessedWord = guessedLetters.join("");
     console.log("guessedWord", guessedWord);
@@ -20,16 +18,28 @@ class GameLogic extends Component {
   }
 
   render() {
-    const allTargetsFilled = this.props.targetBlocks.every(
-      target => target.className === "letter"
-    );
+    const targets = [...this.props.targetBlocks];
+    targets.splice(0, this.props.amountOfLetters);
+    const allTargetsFilled = targets.every(target => target.letter !== null);
     console.log("alltargets filled", allTargetsFilled);
     if (allTargetsFilled) {
-      this.checkWord();
+      this.checkWord(targets);
       return null;
     } else return null;
   }
 }
+
+//   render() {
+//     const targets = this.props.targetBlocks.splice(-this.props.amountOfLetters);
+//     console.log("targets", targets);
+//     const allTargetsFilled = targets.every(target => target.letter === true);
+//     console.log("alltargets filled", allTargetsFilled);
+//     if (allTargetsFilled) {
+//       this.checkWord();
+//       return null;
+//     } else return null;
+//   }
+// }
 
 const mapStateToProps = state => {
   return {

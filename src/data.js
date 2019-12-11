@@ -1,6 +1,6 @@
 export const words = [
-  "tent"
-  // "kompas",
+  "tent",
+  "kompas"
   // "slaapzak",
   // "rugzak",
   // "vliegtuig",

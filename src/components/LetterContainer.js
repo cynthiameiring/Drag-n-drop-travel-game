@@ -24,13 +24,17 @@ class LetterContainer extends Component {
     this.setState({ pickedWord: pickedWord });
   };
 
-  renderLetter(letter) {
+  renderLetter(letter, targetId) {
     console.log("render a letter");
     if (!letter) {
-      return null;
+      return <div></div>;
     }
     return (
-      <Letter name={letter} currentLetterDragged={this.currentLetterDragged} />
+      <Letter
+        targetId={targetId}
+        name={letter}
+        currentLetterDragged={this.currentLetterDragged}
+      />
     );
   }
 
@@ -41,20 +45,6 @@ class LetterContainer extends Component {
     console.log("new letters", this.props.letters);
     return (
       <div>
-        {/* <div
-          className="letter-container"
-          // style={{ overflow: "hidden", clear: "both" }}
-        >
-          {this.props.letters.map((letter, index) => (
-            <Target key={index}>
-              <Letter
-                key={index}
-                name={letter}
-                currentLetterDragged={this.currentLetterDragged}
-              />
-            </Target>
-          ))}
-        </div> */}
         <div
           className="letter-container"
           // style={{ overflow: "hidden", clear: "both" }}
@@ -65,18 +55,15 @@ class LetterContainer extends Component {
               id={target.id}
               moveLetter={this.props.moveLetter}
             >
-              {this.renderLetter(target.letter)}
+              {this.renderLetter(target.letter, target.id)}
             </Target>
           ))}
         </div>
-        {this.props.targetBlocks.length !== 0 ? (
-          <GameLogic
-            startNewGame={this.pickWord}
-            pickedWord={this.state.pickedWord}
-          />
-        ) : (
-          ""
-        )}
+        <GameLogic
+          startNewGame={this.pickWord}
+          pickedWord={this.state.pickedWord}
+          amountOfLetters={this.props.letters.length}
+        />
       </div>
     );
   }
