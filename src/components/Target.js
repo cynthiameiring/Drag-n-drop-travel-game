@@ -2,6 +2,7 @@ import React from "react";
 import { useDrop } from "react-dnd";
 import { ItemTypes } from "./ItemTypes";
 import { connect } from "react-redux";
+import { Square } from "./Square";
 
 function selectBackgroundColor(isActive, canDrop) {
   if (isActive) {
@@ -26,8 +27,9 @@ function Target(props) {
   const isActive = canDrop && isOver;
   const backgroundColor = selectBackgroundColor(isActive, canDrop);
   return (
-    <div ref={drop} style={{ backgroundColor }} className={props.className}>
-      {props.letter}
+    <div ref={drop} style={{ backgroundColor }} className="target">
+      {/* {props.letter} */}
+      <Square>{props.children}</Square>
     </div>
   );
 }

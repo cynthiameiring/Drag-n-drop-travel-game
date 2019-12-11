@@ -24,6 +24,16 @@ class LetterContainer extends Component {
     this.setState({ pickedWord: pickedWord });
   };
 
+  renderLetter(letter) {
+    console.log("render a letter");
+    if (!letter) {
+      return null;
+    }
+    return (
+      <Letter name={letter} currentLetterDragged={this.currentLetterDragged} />
+    );
+  }
+
   render() {
     if (this.props.targetBlocks.length === 0) {
       return "loading..";
@@ -31,31 +41,32 @@ class LetterContainer extends Component {
     console.log("new letters", this.props.letters);
     return (
       <div>
-        <div
+        {/* <div
           className="letter-container"
-          style={{ overflow: "hidden", clear: "both" }}
+          // style={{ overflow: "hidden", clear: "both" }}
         >
           {this.props.letters.map((letter, index) => (
-            <Letter
-              key={index}
-              name={letter}
-              className="letter"
-              currentLetterDragged={this.currentLetterDragged}
-            />
+            <Target key={index}>
+              <Letter
+                key={index}
+                name={letter}
+                currentLetterDragged={this.currentLetterDragged}
+              />
+            </Target>
           ))}
-        </div>
+        </div> */}
         <div
           className="letter-container"
-          style={{ overflow: "hidden", clear: "both" }}
+          // style={{ overflow: "hidden", clear: "both" }}
         >
           {this.props.targetBlocks.map(target => (
             <Target
               key={target.id}
               id={target.id}
-              className={target.className}
-              letter={target.nameLetter}
               moveLetter={this.props.moveLetter}
-            />
+            >
+              {this.renderLetter(target.letter)}
+            </Target>
           ))}
         </div>
         {this.props.targetBlocks.length !== 0 ? (

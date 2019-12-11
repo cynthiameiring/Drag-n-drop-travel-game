@@ -1,8 +1,20 @@
 export default (state = [], action) => {
+  const letters = action.payload;
   if (action.type === "GET_LETTERS") {
     const clearState = [];
-    for (let i = 0; i < action.payload.length; i++) {
-      clearState.push({ id: i, className: "target", nameLetter: "" });
+    for (let i = 0; i < letters.length; i++) {
+      clearState.push({
+        id: i,
+        letter: letters[i]
+        // ,className: "target", nameLetter: ""
+      });
+    }
+    for (let i = 0; i < letters.length; i++) {
+      clearState.push({
+        id: letters.length + i,
+        letter: null
+        // ,className: "target", nameLetter: ""
+      });
     }
     return clearState;
   } else if (action.type === "MOVE_LETTER") {

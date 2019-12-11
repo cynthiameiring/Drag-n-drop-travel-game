@@ -5,7 +5,7 @@ import { ItemTypes } from "./ItemTypes";
 import { currentLetterDragged } from "../actions/letter";
 
 function Letter({ name, currentLetterDragged }) {
-  const [{ opacity, nameLetter }, drag] = useDrag({
+  const [{ opacity }, drag] = useDrag({
     item: { name, type: ItemTypes.LETTER },
     collect: monitor => ({
       opacity: monitor.isDragging() ? 0.4 : 1,
