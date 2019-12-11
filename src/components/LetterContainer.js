@@ -16,25 +16,24 @@ class LetterContainer extends Component {
     // this.setState({});
   }
 
-  pickWord() {
+  pickWord = () => {
     const numberOfWords = words.length;
     const randomNumber = Math.floor(Math.random() * numberOfWords);
     const pickedWord = words[randomNumber];
     this.props.getLetters(pickedWord);
     this.setState({ pickedWord: pickedWord });
-  }
+  };
 
   render() {
     if (this.props.targetBlocks.length === 0) {
       return "loading..";
     }
-    console.log("hio:", this.props.letters);
-    console.log("targetBlocks", this.props.targetBlocks.length);
+    console.log("new letters", this.props.letters);
     return (
       <div>
         <div
           className="letter-container"
-          // style={{ overflow: "hidden", clear: "both" }}
+          style={{ overflow: "hidden", clear: "both" }}
         >
           {this.props.letters.map((letter, index) => (
             <Letter
@@ -47,7 +46,7 @@ class LetterContainer extends Component {
         </div>
         <div
           className="letter-container"
-          // style={{ overflow: "hidden", clear: "both" }}
+          style={{ overflow: "hidden", clear: "both" }}
         >
           {this.props.targetBlocks.map(target => (
             <Target
@@ -60,7 +59,10 @@ class LetterContainer extends Component {
           ))}
         </div>
         {this.props.targetBlocks.length !== 0 ? (
-          <GameLogic pickedWord={this.state.pickedWord} />
+          <GameLogic
+            startNewGame={this.pickWord}
+            pickedWord={this.state.pickedWord}
+          />
         ) : (
           ""
         )}
