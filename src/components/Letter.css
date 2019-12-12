@@ -9,7 +9,7 @@
   justify-content: center;
   flex-wrap: wrap;
   flex-direction: row;
-  margin-bottom: 5%;
+  margin-bottom: 3%;
 }
 
 .letter {
@@ -44,14 +44,14 @@
 .travel-image-container {
   display: flex;
   justify-content: center;
-  padding: 8%;
+  padding: 8% 8% 3% 8%;
   height: 200px;
 }
 
 .app {
   background-image: url("../pictures/test2.jpg");
   background-repeat: no-repeat;
-  padding-bottom: 15%;
+  padding-bottom: 2%;
   background-size: cover;
   background-position: center;
 }
@@ -62,3 +62,79 @@
   animation-duration: 1s;
   /* animation-iteration-count: 2; */
 }
+
+.button-container {
+  display: flex;
+  justify-content: center;
+}
+.button {
+  display: inline-block;
+  border-radius: 10%;
+  background-color: #f9d339;
+  border: 1px;
+  border-style: solid;
+  color: black;
+  text-align: center;
+  font-size: 18px;
+  padding: 10px;
+  width: 100px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.button:hover {
+  cursor: pointer;
+  background-color: #e67e41;
+}
+
+.textballoon-container {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0% 2% 0% 10%;
+}
+.container {
+  position: relative;
+  text-align: center;
+  display: flex;
+}
+
+.textballoon {
+  display: inline-block;
+  width: 300px;
+  height: 100px;
+  transform: scaleX(-1);
+  margin: 0% 2% 0% 0%;
+}
+
+.bottom-right {
+  width: 230px;
+  position: absolute;
+  word-wrap: break-word;
+  left: 10px;
+  top: 25px;
+}
+
+.adventurer {
+  display: inline-block;
+  height: 200px;
+  transform: scaleX(-1);
+}
+
+/* .button span:after {
+  content: "\00bb";
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+} */

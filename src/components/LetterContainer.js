@@ -8,6 +8,8 @@ import { getLetters } from "../actions/word";
 import { words } from "../data";
 import GameLogic from "./GameLogic";
 import shortid from "shortid";
+import textballoon from "../pictures/textballoon.png";
+import adventurer from "../pictures/adventurer.png";
 
 class LetterContainer extends Component {
   state = { pickedWord: null, randomKey: null };
@@ -28,7 +30,7 @@ class LetterContainer extends Component {
   renderLetter(letter, targetId) {
     console.log("render a letter");
     if (!letter) {
-      return <div></div>;
+      return null;
     }
     return (
       <Letter
@@ -57,7 +59,12 @@ class LetterContainer extends Component {
       this.props.letters.length
     );
 
-    console.log("new letters", this.props.letters);
+    const targets = [...this.props.targetBlocks];
+    targets.splice(0, this.props.letters.length);
+    console.log("targets", targets);
+    const allTargetsFilled = targets.every(target => target.letter !== null);
+    console.log("alltargets filled", allTargetsFilled);
+
     return (
       <div className="app">
         <div className="travel-image-container" key={this.state.randomKey}>
@@ -96,12 +103,34 @@ class LetterContainer extends Component {
             </Target>
           ))}
         </div>
-        <GameLogic
-          // startNewGame={this.pickWord}
-          pickedWord={this.state.pickedWord.word}
-          amountOfLetters={this.props.letters.length}
-        />
-        <button onClick={this.handleClick}>Next</button>
+
+        {allTargetsFilled ? (
+          <GameLogic
+            pickedWord={this.state.pickedWord.word}
+            targets={targets}
+          />
+        ) : (
+          ""
+        )}
+        {/* <GameLogic pickedWord={this.state.pickedWord.word} /> */}
+        <div className="button-container">
+          <button className="button" onClick={this.handleClick}>
+            Next
+          </button>
+        </div>
+        <div className="textballoon-container">
+          <div className="container">
+            <img
+              className="textballoon"
+              alt="textballoon"
+              src={textballoon}
+            ></img>
+            <div className="bottom-right">
+              Drag the letters to guess the right word, good luck!
+            </div>
+          </div>
+          <img className="adventurer" alt="adventurer" src={adventurer}></img>
+        </div>
       </div>
     );
   }
