@@ -9,7 +9,7 @@
   justify-content: center;
   flex-wrap: wrap;
   flex-direction: row;
-  margin-bottom: 3%;
+  margin-bottom: 1%;
 }
 
 .letter {
@@ -44,7 +44,7 @@
 .travel-image-container {
   display: flex;
   justify-content: center;
-  padding: 8% 8% 3% 8%;
+  padding: 0% 8% 3% 8%;
   height: 200px;
 }
 
@@ -58,16 +58,21 @@
 
 .animated.travel-image {
   height: 200px;
-  animation-name: bounceInRight;
+  animation-name: bounceInLeft;
   animation-duration: 1s;
-  /* animation-iteration-count: 2; */
 }
 
 .button-container {
   display: flex;
   justify-content: center;
+  padding: 2%;
 }
-.button {
+
+.button-invisible {
+  visibility: hidden;
+}
+.button,
+.button-invisible {
   display: inline-block;
   border-radius: 10%;
   background-color: #f9d339;
@@ -87,54 +92,3 @@
   cursor: pointer;
   background-color: #e67e41;
 }
-
-.textballoon-container {
-  display: flex;
-  justify-content: flex-end;
-  margin: 0% 2% 0% 10%;
-}
-.container {
-  position: relative;
-  text-align: center;
-  display: flex;
-}
-
-.textballoon {
-  display: inline-block;
-  width: 300px;
-  height: 100px;
-  transform: scaleX(-1);
-  margin: 0% 2% 0% 0%;
-}
-
-.bottom-right {
-  width: 230px;
-  position: absolute;
-  word-wrap: break-word;
-  left: 10px;
-  top: 25px;
-}
-
-.adventurer {
-  display: inline-block;
-  height: 200px;
-  transform: scaleX(-1);
-}
-
-/* .button span:after {
-  content: "\00bb";
-  position: absolute;
-  opacity: 0;
-  top: 0;
-  right: -20px;
-  transition: 0.5s;
-}
-
-.button:hover span {
-  padding-right: 25px;
-}
-
-.button:hover span:after {
-  opacity: 1;
-  right: 0;
-} */

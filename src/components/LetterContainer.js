@@ -6,12 +6,18 @@ import "./Letter.css";
 import { moveLetter } from "../actions/letter";
 import { getLetters } from "../actions/word";
 import { words } from "../data";
-import GameLogic from "./GameLogic";
 import shortid from "shortid";
 import Adventurer from "./Adventurer";
+import Header from "./Header";
+import { correctWord } from "../actions/word";
+import { wrongWord } from "../actions/word";
 
 class LetterContainer extends Component {
-  state = { pickedWord: null, randomKey: null };
+  state = {
+    pickedWord: null,
+    randomKeyForPoints: null,
+    randomKeyForImage: null
+  };
 
   componentDidMount() {
     this.pickWord();
@@ -42,20 +48,22 @@ class LetterContainer extends Component {
   handleClick = () => {
     this.pickWord();
     //generate a random Key for the animation to happen when rerendering
-    this.setState({ randomKey: shortid.generate() });
+    this.setState({ randomKeyForImage: shortid.generate() });
   };
 
-  // typeWriter = txt => {
-  //   let i = 0;
-  //   const speed = 50;
-
-  //   if (i < txt.length) {
-  //     txt[i];
-  //     console.log("text[i]", txt[i]);
-  //     i++;
-  //     setTimeout(this.typeWriter, speed);
-  //   }
-  // };
+  checkWord = () => {
+    const secondHalf = [...this.props.targetBlocks].splice(
+      this.props.letters.length
+    );
+    const guessedLetters = secondHalf.map(target => target.letter);
+    const guessedWord = guessedLetters.join("");
+    if (guessedWord === this.state.pickedWord.word) {
+      this.props.correctWord();
+    } else {
+      this.props.wrongWord();
+    }
+    this.setState({ randomKeyForPoints: shortid.generate() });
+  };
 
   render() {
     if (this.props.targetBlocks.length === 0) {
@@ -68,16 +76,16 @@ class LetterContainer extends Component {
     const secondHalf = [...this.props.targetBlocks].splice(
       this.props.letters.length
     );
-
     const targets = [...this.props.targetBlocks];
     targets.splice(0, this.props.letters.length);
-    console.log("targets", targets);
     const allTargetsFilled = targets.every(target => target.letter !== null);
-    console.log("alltargets filled", allTargetsFilled);
-
     return (
       <div className="app">
-        <div className="travel-image-container" key={this.state.randomKey}>
+        <Header randomKey={this.state.randomKeyForPoints} />
+        <div
+          className="travel-image-container"
+          key={this.state.randomKeyForImage}
+        >
           {" "}
           <img
             alt=""
@@ -86,10 +94,7 @@ class LetterContainer extends Component {
           ></img>
         </div>
 
-        <div
-          className="letter-container"
-          // style={{ overflow: "hidden", clear: "both" }}
-        >
+        <div className="letter-container">
           {firstHalf.map(target => (
             <Target
               key={target.id}
@@ -114,20 +119,27 @@ class LetterContainer extends Component {
           ))}
         </div>
 
-        {allTargetsFilled ? (
-          <GameLogic
-            pickedWord={this.state.pickedWord.word}
-            targets={targets}
-          />
-        ) : (
-          ""
-        )}
         <div className="button-container">
-          <button className="button" onClick={this.handleClick}>
-            Next
-          </button>
+          {allTargetsFilled ? (
+            <button className="button" onClick={this.checkWord}>
+              Check
+            </button>
+          ) : (
+            <button className="button-invisible" onClick={this.checkWord}>
+              Check
+            </button>
+          )}
+          {this.props.guess === "correct" ? (
+            <button className="button" onClick={this.handleClick}>
+              Next
+            </button>
+          ) : (
+            <button className="button-invisible" onClick={this.handleClick}>
+              Next
+            </button>
+          )}
         </div>
-        <Adventurer />
+        <Adventurer randomKey={this.state.randomKeyForPoints} />
       </div>
     );
   }
@@ -135,12 +147,15 @@ class LetterContainer extends Component {
 
 const mapStateToProps = state => {
   return {
+    guess: state.guess,
     letters: state.letters,
     targetBlocks: state.targetBlocks
   };
 };
 
 export default connect(mapStateToProps, {
+  correctWord,
+  wrongWord,
   moveLetter,
   getLetters
 })(LetterContainer);

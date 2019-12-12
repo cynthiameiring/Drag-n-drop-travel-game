@@ -15,7 +15,6 @@
     "redux": "^4.0.4",
     "redux-thunk": "^2.3.0",
     "shortid": "^2.2.15",
-    "typewriter-effect": "^2.12.1",
     "uifx": "^2.0.6"
   },
   "scripts": {

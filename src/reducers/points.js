@@ -1,12 +1,9 @@
-export default (state = null, action) => {
+export default (state = 0, action) => {
   if (action.type === "CORRECT_WORD") {
-    if (state === null) {
-      return 1;
-    }
     const newState = state + 1;
     return newState;
   } else if (action.type === "WRONG_WORD") {
-    if (state === null) {
+    if (state === 0) {
       return state;
     } else {
       const newState = state - 1;

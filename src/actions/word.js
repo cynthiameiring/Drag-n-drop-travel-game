@@ -18,13 +18,13 @@ export const getLetters = pickedWord => {
 export const correctWord = () => {
   return {
     type: "CORRECT_WORD",
-    payload: ""
+    payload: "correct"
   };
 };
 
 export const wrongWord = () => {
   return {
     type: "WRONG_WORD",
-    payload: ""
+    payload: "false"
   };
 };
