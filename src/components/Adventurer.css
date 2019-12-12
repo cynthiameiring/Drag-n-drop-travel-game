@@ -1,47 +1,42 @@
-.textballoon-container {
+.bottom-component {
   display: flex;
   justify-content: flex-end;
   margin: 0% 2% 0% 10%;
 }
+
 .container {
-  position: relative;
-  text-align: center;
   display: flex;
 }
 
 .textballoon {
-  display: inline-block;
+  /* position: relative; */
   width: 300px;
   height: 100px;
+  /* line-height: 100px; */
+  /* text-align: center; */
   transform: scaleX(-1);
-  margin: 0% 2% 0% 0%;
 }
-
-.bottom-right {
-  width: 230px;
+.typewriter-text {
+  width: 260px;
+  height: 100px;
+  padding: 12px;
   position: absolute;
-  word-wrap: break-word;
-  left: 15px;
-  top: 10px;
+  /* display: inline-block; */
+  /* line-height: normal; */
   font-family: Courier, monospace;
+  text-align: center;
+  vertical-align: middle;
+  letter-spacing: 2px;
+  font-size: 19px;
+  font-weight: 500;
+  box-sizing: border-box;
 }
 
 .adventurer {
   display: inline-block;
   height: 200px;
-  transform: scaleX(-1);
-}
 
-.typewriter-text {
-  display: inline-block;
-  overflow: hidden;
-  animation: typing 1s steps(11, end), blink 0.75s step-end infinite;
-  letter-spacing: 2px;
-  white-space: nowrap;
-  font-size: 24px;
-  font-weight: 500;
-  border-right: 4px solid orange;
-  box-sizing: border-box;
+  transform: scaleX(-1);
 }
 
 @keyframes typing {
