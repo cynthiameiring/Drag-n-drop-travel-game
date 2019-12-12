@@ -15,7 +15,16 @@ export const getLetters = pickedWord => {
   };
 };
 
-// export const newWord = () =>
-// return {
-//     type: ""
-// }
+export const correctWord = () => {
+  return {
+    type: "CORRECT_WORD",
+    payload: "correct"
+  };
+};
+
+export const wrongWord = () => {
+  return {
+    type: "WRONG_WORD",
+    payload: "false"
+  };
+};

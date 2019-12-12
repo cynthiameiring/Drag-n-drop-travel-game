@@ -18,7 +18,7 @@ export const words = [
       "https://cdn.pixabay.com/photo/2019/06/30/19/49/school-bag-4308691__340.png"
   },
   {
-    word: "shell",
+    word: "schelp",
     url:
       "http://www.freepngclipart.com/download/cartoon/58854-pearl-great-shell-cartoon-drawing-free-transparent-image-hd.png"
   },

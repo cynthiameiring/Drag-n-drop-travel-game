@@ -1,24 +1,12 @@
-// export function moveLetter(targetId, letter) {
-//   console.log("what is target id?", targetId);
-//   return {
-//     type: "MOVE_LETTER",
-//     targetId: targetId,
-//     letter: letter
-//   };
-// }
-
-export function moveLetter(targetId, letter, previousTarget) {
-  console.log("what is target id?", targetId);
+export function moveLetter(target, currentLetter) {
   return {
     type: "MOVE_LETTER",
-    targetId: targetId,
-    letter: letter,
-    previousTarget: previousTarget
+    target: target,
+    currentLetter: currentLetter
   };
 }
 
 export function currentLetterDragged(letter, targetId) {
-  console.log("what is letter and targetId?", letter, targetId);
   return {
     type: "CURRENT_LETTER",
     letter: letter,
