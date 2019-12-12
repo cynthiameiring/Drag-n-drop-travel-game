@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Letter from "./Letter";
-import Target from "./Target";
+import TargetContainer from "./TargetContainer";
 import "./Letter.css";
-import { moveLetter } from "../actions/letter";
 import { getLetters } from "../actions/word";
 import { words } from "../data";
 import shortid from "shortid";
@@ -32,19 +31,6 @@ class LetterContainer extends Component {
     this.setState({ pickedWord: pickedWord });
   };
 
-  renderLetter(letter, targetId) {
-    if (!letter) {
-      return null;
-    }
-    return (
-      <Letter
-        targetId={targetId}
-        name={letter}
-        currentLetterDragged={this.currentLetterDragged}
-      />
-    );
-  }
-
   handleClick = () => {
     this.pickWord();
     //generate a random Key for the animation to happen when rerendering
@@ -64,6 +50,18 @@ class LetterContainer extends Component {
     }
     this.setState({ randomKeyForPoints: shortid.generate() });
   };
+  renderLetter(letter, targetId) {
+    if (!letter) {
+      return null;
+    }
+    return (
+      <Letter
+        targetId={targetId}
+        name={letter}
+        currentLetterDragged={this.currentLetterDragged}
+      />
+    );
+  }
 
   render() {
     if (this.props.targetBlocks.length === 0) {
@@ -96,26 +94,20 @@ class LetterContainer extends Component {
 
         <div className="letter-container">
           {firstHalf.map(target => (
-            <Target
-              key={target.id}
-              id={target.id}
-              moveLetter={this.props.moveLetter}
-              className="target"
-            >
+            <TargetContainer key={target.id} target={target} className="target">
               {this.renderLetter(target.letter, target.id)}
-            </Target>
+            </TargetContainer>
           ))}
         </div>
         <div className="target-container">
           {secondHalf.map(target => (
-            <Target
+            <TargetContainer
               key={target.id}
-              id={target.id}
-              moveLetter={this.props.moveLetter}
+              target={target}
               className="placeholder"
             >
               {this.renderLetter(target.letter, target.id)}
-            </Target>
+            </TargetContainer>
           ))}
         </div>
 
@@ -156,6 +148,5 @@ const mapStateToProps = state => {
 export default connect(mapStateToProps, {
   correctWord,
   wrongWord,
-  moveLetter,
   getLetters
 })(LetterContainer);

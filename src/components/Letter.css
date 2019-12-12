@@ -65,7 +65,7 @@
 .button-container {
   display: flex;
   justify-content: center;
-  padding: 2%;
+  padding-top: 2%;
 }
 
 .button-invisible {
