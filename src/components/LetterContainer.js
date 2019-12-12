@@ -8,8 +8,7 @@ import { getLetters } from "../actions/word";
 import { words } from "../data";
 import GameLogic from "./GameLogic";
 import shortid from "shortid";
-import textballoon from "../pictures/textballoon.png";
-import adventurer from "../pictures/adventurer.png";
+import Adventurer from "./Adventurer";
 
 class LetterContainer extends Component {
   state = { pickedWord: null, randomKey: null };
@@ -28,7 +27,6 @@ class LetterContainer extends Component {
   };
 
   renderLetter(letter, targetId) {
-    console.log("render a letter");
     if (!letter) {
       return null;
     }
@@ -46,6 +44,18 @@ class LetterContainer extends Component {
     //generate a random Key for the animation to happen when rerendering
     this.setState({ randomKey: shortid.generate() });
   };
+
+  // typeWriter = txt => {
+  //   let i = 0;
+  //   const speed = 50;
+
+  //   if (i < txt.length) {
+  //     txt[i];
+  //     console.log("text[i]", txt[i]);
+  //     i++;
+  //     setTimeout(this.typeWriter, speed);
+  //   }
+  // };
 
   render() {
     if (this.props.targetBlocks.length === 0) {
@@ -112,25 +122,12 @@ class LetterContainer extends Component {
         ) : (
           ""
         )}
-        {/* <GameLogic pickedWord={this.state.pickedWord.word} /> */}
         <div className="button-container">
           <button className="button" onClick={this.handleClick}>
             Next
           </button>
         </div>
-        <div className="textballoon-container">
-          <div className="container">
-            <img
-              className="textballoon"
-              alt="textballoon"
-              src={textballoon}
-            ></img>
-            <div className="bottom-right">
-              Drag the letters to guess the right word, good luck!
-            </div>
-          </div>
-          <img className="adventurer" alt="adventurer" src={adventurer}></img>
-        </div>
+        <Adventurer />
       </div>
     );
   }
