@@ -10,7 +10,8 @@ export const words = [
   },
   {
     word: "vliegtuig",
-    url: "https://webstockreview.net/images/clipart-airplane-cartoon-7.png"
+    url:
+      "https://webcomicms.net/sites/default/files/clipart/143874/airplane-cartoon-png-143874-3249979.png"
   },
   {
     word: "rugzak",
@@ -19,8 +20,7 @@ export const words = [
   },
   {
     word: "schelp",
-    url:
-      "http://www.freepngclipart.com/download/cartoon/58854-pearl-great-shell-cartoon-drawing-free-transparent-image-hd.png"
+    url: "https://huntpng.com/images250/drawing-shell-cartoon-1.png"
   },
   {
     word: "bergen",
@@ -41,5 +41,25 @@ export const words = [
     word: "wereld",
     url:
       "https://making-the-web.com/sites/default/files/clipart/149118/cartoon-world-globe-149118-835595.jpg"
+  },
+  {
+    word: "fiets",
+    url:
+      "http://carlitoz.com/images/red-flat-icon-ride-cartoon-bikes-cycle-bike.png"
+  },
+  {
+    word: "eiland",
+    url:
+      "https://www.seekclipart.com/clipng/big/33-330449_landscape-clipart-under-sea-cartoon-island-png-download.png"
+  },
+  {
+    word: "zeilboot",
+    url:
+      "http://www.sebastien-laframboise.com/wp-content/uploads/twiz-boat-1.png"
+  },
+  {
+    word: "kameel",
+    url:
+      "https://vignette.wikia.nocookie.net/family-guy-the-quest-for-stuff/images/d/d5/Deco-party-camel.png/revision/latest?cb=20140609135329"
   }
 ];
