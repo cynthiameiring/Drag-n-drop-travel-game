@@ -5,14 +5,14 @@ import { Provider } from "react-redux";
 import Backend from "react-dnd-html5-backend";
 import { DndProvider } from "react-dnd";
 
-import LetterContainer from "./components/LetterContainer";
+import GameContainer from "./components/GameContainer";
 
 class App extends Component {
   render() {
     return (
       <Provider store={store}>
         <DndProvider backend={Backend}>
-          <LetterContainer />
+          <GameContainer />
         </DndProvider>
       </Provider>
     );

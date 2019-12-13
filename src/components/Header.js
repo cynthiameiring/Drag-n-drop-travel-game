@@ -1,20 +1,21 @@
 import React from "react";
-import { connect } from "react-redux";
 import "./Header.css";
 
-function Header(props) {
+export default function Header(props) {
   return (
-    <div className="point-counter" key={props.randomKey}>
-      <p className="animated points">Points : {props.points}</p>
-      <div className="buffer"> Buffer</div>
+    <div>
+      <div className="point-counter" key={props.randomKeyforPoints}>
+        <p className="animated points">Points : {props.points}</p>
+        <div className="buffer"> Buffer</div>
+      </div>
+      <div className="travel-image-container" key={props.randomKeyForImage}>
+        {" "}
+        <img
+          alt=""
+          className="animated travel-image"
+          src={props.pickedWordUrl}
+        ></img>
+      </div>
     </div>
   );
 }
-
-const mapStateToProps = state => {
-  return {
-    points: state.points
-  };
-};
-
-export default connect(mapStateToProps)(Header);

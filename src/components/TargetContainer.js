@@ -1,42 +1,56 @@
-import React from "react";
-import { useDrop } from "react-dnd";
-import { ItemTypes } from "./ItemTypes";
+import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Target } from "./Target";
-import { moveLetter } from "../actions/letter";
+import Letter from "./Letter";
+import Target from "./Target";
 
-function selectBackgroundColor(isActive, canDrop) {
-  if (isActive) {
-    return "rgb(100, 100, 100)";
-  } else if (canDrop) {
-    return;
-  } else {
-    return;
+class TargetContainer extends Component {
+  renderLetter(letter, targetId) {
+    if (!letter) {
+      return null;
+    }
+    return (
+      <Letter
+        targetId={targetId}
+        name={letter}
+        currentLetterDragged={this.currentLetterDragged}
+      />
+    );
   }
-}
 
-function TargetContainer(props) {
-  const [{ canDrop, isOver }, drop] = useDrop({
-    accept: ItemTypes.LETTER,
-    drop: () => props.moveLetter(props.target, props.currentLetter),
-    collect: monitor => ({
-      isOver: monitor.isOver(),
-      canDrop: monitor.canDrop()
-    })
-  });
-  const isActive = canDrop && isOver;
-  const backgroundColor = selectBackgroundColor(isActive, canDrop);
-  return (
-    <div ref={drop} style={{ backgroundColor }} className={props.className}>
-      <Target>{props.children}</Target>
-    </div>
-  );
+  render() {
+    const firstHalf = [...this.props.targetBlocks].splice(
+      0,
+      this.props.letters.length
+    );
+    const secondHalf = [...this.props.targetBlocks].splice(
+      this.props.letters.length
+    );
+    return (
+      <div>
+        <div className="letter-container">
+          {firstHalf.map(target => (
+            <Target key={target.id} target={target} className="target">
+              {this.renderLetter(target.letter, target.id)}
+            </Target>
+          ))}
+        </div>
+        <div className="target-container">
+          {secondHalf.map(target => (
+            <Target key={target.id} target={target} className="placeholder">
+              {this.renderLetter(target.letter, target.id)}
+            </Target>
+          ))}
+        </div>
+      </div>
+    );
+  }
 }
 
 const mapStateToProps = state => {
   return {
-    currentLetter: state.currentLetter
+    targetBlocks: state.targetBlocks,
+    letters: state.letters
   };
 };
 
-export default connect(mapStateToProps, { moveLetter })(TargetContainer);
+export default connect(mapStateToProps)(TargetContainer);
