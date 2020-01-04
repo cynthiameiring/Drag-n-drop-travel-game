@@ -1,65 +1,63 @@
+import tent from "./media/tent.png";
+import kompas from "./media/kompas.png";
+import vliegtuig from "./media/vliegtuig.png";
+import rugzak from "./media/rugzak.webp";
+import schelp from "./media/schelp.png";
+import bergen from "./media/bergen.png";
+import vulkaan from "./media/vulkaan.png";
+import koffer from "./media/koffer.png";
+import wereld from "./media/wereld.jpg";
+import fiets from "./media/fiets.png";
+import eiland from "./media/eiland.png";
+import kameel from "./media/kameel.png";
+
 export const words = [
   {
     word: "tent",
-    url: "http://www.clker.com/cliparts/I/L/m/U/J/0/tent-ridge-blue-hi.png"
+    url: tent
   },
   {
     word: "kompas",
-    url:
-      "https://www.jing.fm/clipimg/full/225-2254425_compass-transparent-cartoon-cartoon-compass-transparent-background.png"
+    url: kompas
   },
   {
     word: "vliegtuig",
-    url:
-      "https://webcomicms.net/sites/default/files/clipart/143874/airplane-cartoon-png-143874-3249979.png"
+    url: vliegtuig
   },
   {
     word: "rugzak",
-    url:
-      "https://cdn.pixabay.com/photo/2019/06/30/19/49/school-bag-4308691__340.png"
+    url: rugzak
   },
   {
     word: "schelp",
-    url: "https://huntpng.com/images250/drawing-shell-cartoon-1.png"
+    url: schelp
   },
   {
     word: "bergen",
-    url:
-      "https://library.kissclipart.com/20181219/fyw/kissclipart-mountain-png-clipart-borders-and-frames-clip-art-42c8b00bf12d35e3.png"
+    url: bergen
   },
   {
     word: "vulkaan",
-    url:
-      "https://www.tynker.com/projects/images/570fdfd165e4f223478b458e/volcano---volcano.png"
+    url: vulkaan
   },
   {
     word: "koffer",
-    url:
-      "https://www.jing.fm/clipimg/full/202-2023736_suitcase-emoji-png-bag.png"
+    url: koffer
   },
   {
     word: "wereld",
-    url:
-      "https://making-the-web.com/sites/default/files/clipart/149118/cartoon-world-globe-149118-835595.jpg"
+    url: wereld
   },
   {
     word: "fiets",
-    url:
-      "http://carlitoz.com/images/red-flat-icon-ride-cartoon-bikes-cycle-bike.png"
+    url: fiets
   },
   {
     word: "eiland",
-    url:
-      "https://www.seekclipart.com/clipng/big/33-330449_landscape-clipart-under-sea-cartoon-island-png-download.png"
-  },
-  {
-    word: "zeilboot",
-    url:
-      "http://www.sebastien-laframboise.com/wp-content/uploads/twiz-boat-1.png"
+    url: eiland
   },
   {
     word: "kameel",
-    url:
-      "https://vignette.wikia.nocookie.net/family-guy-the-quest-for-stuff/images/d/d5/Deco-party-camel.png/revision/latest?cb=20140609135329"
+    url: kameel
   }
 ];

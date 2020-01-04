@@ -5,9 +5,3 @@ export default (state = [], action) => {
   }
   return state;
 };
-
-// clearState.push({
-//   id: i,
-//   letter: letters[i]
-//   // ,className: "target", nameLetter: ""
-// });
