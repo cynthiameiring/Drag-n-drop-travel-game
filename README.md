@@ -11,7 +11,7 @@
 
 ## Preface
 
-This project was build in week 10 of the Codaisseur bootcamp. The goal was to build an app in 4 days with the theme "travel" and with a technology we didn't learn before. This app is made for childeren who want to learn the Dutch language in a playfull way, by dragging letters into the right place and guessing the word. React-dnd is used as the "new technology" to make it possible to drag and drop elements.
+This project was built in week 10 of the Codaisseur bootcamp. The goal was to build an app in 4 days with the theme "travel" and with a technology we didn't learn before. This app is made for children who want to learn the Dutch language in a playful way, by dragging letters into the right place and guessing the word. React-dnd is used as the "new technology" to make it possible to drag and drop elements.
 
 ## Demo
 
@@ -30,3 +30,4 @@ This project was build in week 10 of the Codaisseur bootcamp. The goal was to bu
 - `react-dnd`: a library to drag and drop elements
 - `react-typist` for a typing effect in the text balloon
 - `uifx` for the sound effect
+
